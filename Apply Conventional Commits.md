@@ -1,4 +1,3 @@
-
 **Conventional Commits** provides an easy set of rules for creating an explicit commit history. This leads to more readable messages that are easy to follow when looking through the project history. [Read full of spec and samples of Conventional Commits.](https://conventionalcommits.org) 
 
 #### Commit Message Format
@@ -106,6 +105,34 @@ npx husky install
 # or
 yarn husky install
 
+```
+
+
+
+# Steps for windows
+
+
+```sh
+# Install packages
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+# commitlint.config.js
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+Copy code from https://raw.githubusercontent.com/conventional-changelog/commitlint/master/%40commitlint/config-conventional/index.js to file commitlint.config.js
+
+# Install Husky
+npm install husky --save-dev
+npx husky install
+npx husky add .husky/commit-msg
+
+# Modify commit-msg
+Open file .husky/commit-msg, add following lines:
+	#!/bin/sh
+	npx --no-install commitlint --edit "$1"
+# Modify commit-msg	
+Add script to file package.json
+	"add-commitlint": "npm i && npx husky install"
+	
 ```
 
 
